@@ -12,7 +12,8 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['login', 'register', 'getUsers']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'getUsers']]);   
+
     }
     
     public function login(Request $request)
@@ -69,10 +70,17 @@ class UserController extends Controller
         ]);
     }
 
-    public function me()
-    {
+    public function getUserDetail()
+    {  
+        // if(!is_null($user)) {
+        //     return response()->json([
+        //         'user' => $user
+        //     ]);
+        // } else {
+        //     return 
+        // }
         return response()->json([
-            'user' => Auth::user(),
+            'data' => auth()->user(),
         ]);
     }
 

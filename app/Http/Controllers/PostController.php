@@ -41,7 +41,7 @@ class PostController extends Controller
             'finishDue' => 'required|date',
         ]);
 
-        $new_post = [...$request->all(), "user_id" => $user->id];
+        $new_post = [...$request->only('title', 'description', 'finishDue'), "user_id" => $user->id];
         return Post::create($new_post);
     }
 
